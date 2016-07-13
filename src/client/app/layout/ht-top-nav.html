@@ -10,7 +10,7 @@
     <div class="navbar-collapse collapse">
         <div class="pull-left navbar-header navbar-brand">
             <div ng-show="vm.isLoggedIn">
-                <span class="user-title">Hello, Brian Clark: {{vm.user}}</span>
+                <span class="user-title">Hello<!-- , Brian Clark: {{vm.user}} --></span>
                 <button class="btn btn-primary btn-xs" ng-click="vm.logout()">Logout</button>
             </div>
             <div ng-show="!vm.isLoggedIn">

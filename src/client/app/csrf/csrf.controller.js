@@ -5,9 +5,9 @@
         .module('app.csrf')
         .controller('CsrfController', CsrfController);
 
-    CsrfController.$inject = ['$q', 'userservice', 'logger'];
+    CsrfController.$inject = ['$q', 'userservice', 'logger', '$sce'];
     /* @ngInject */
-    function CsrfController($q, userservice, logger) {
+    function CsrfController($q, userservice, logger, $sce) {
         var vm = this;
         vm.title = 'CSRF';
         vm.user = {
@@ -41,7 +41,10 @@
             userservice.getProfile()
                 .then(function(response) {
                     logger.info('Received profile data: ', response);
-                    vm.user = response;
+                    vm.user.firstName = response.firstName;
+                    vm.user.lastName = $sce.trustAsHtml(response.lastName);
+                    // vm.zz = $sce.trustAsHtml("<b>hello</b><script>alert(1)</script>");
+                    // vm.zz = $sce.trustAsHtml(vm.user.lastName);
                 })
                 .catch(function(error) {
                     logger.error(error);

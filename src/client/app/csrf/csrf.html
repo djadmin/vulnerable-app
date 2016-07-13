@@ -27,9 +27,10 @@
                             <button ng-click="vm.getProfile()">Get Latest User Profile</button>
                             <br>
                             <br>
-                            <label>First Name: {{vm.user.firstName}}</label>
+                            <label>First Name: </label><span ng-bind-html="vm.user.firstName"></span>
                             <br>
-                            <label>Last Name: {{vm.user.lastName}}</label>
+                            <label>Last Name: </label><span ng-bind-html="vm.user.lastName"></span>
+                            <!-- <pre ng-bind-html="vm.zz"></pre> -->
                         </div>
                         <div class="widget-foot">
                             <div class="clearfix"></div>

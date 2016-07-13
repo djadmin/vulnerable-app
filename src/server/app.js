@@ -3,7 +3,7 @@
 
 var express = require('express');
 var app = express();
-app.disable('x-powered-by');
+// app.disable('x-powered-by');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var favicon = require('serve-favicon');
@@ -18,6 +18,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger('dev'));
+
+// app.use(function(req, res, next) {
+//     res.setHeader('Content-Security-Policy', 'script-src \'self\' ajax.googleapis.com');
+//     return next();
+// });
 
 app.use('/api', require('./routes'));
 

