@@ -5,15 +5,16 @@
         .module('app.xss-search')
         .controller('XssSearchController', XssSearchController);
 
-    XssSearchController.$inject = ['$q', '$sanitize', '$sce', 'dataservice', 'logger', '$location', '$scope', '$timeout'];
+    XssSearchController.$inject = ['$q', '$sanitize', '$sce', 'dataservice', 'logger', '$location',
+    '$scope', '$timeout'];
     /* @ngInject */
-    function XssSearchController($q, $sanitize, $sce, dataservice, logger, $location, $scope, $timeout) {
+    function XssSearchController($q, $sanitize, $sce, dataservice, logger, $location,
+        $scope, $timeout) {
         var vm = this;
         vm.title = 'XSS Search';
         vm.search = search;
         vm.searchResults = undefined;
 
-        vm.searchTerm = "zz"; //$location.hash();
         $timeout(function () {
             $scope.searchTerm = $location.hash();
             vm.search($scope.searchTerm);
