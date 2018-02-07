@@ -5,13 +5,19 @@
         .module('app.xss-search')
         .controller('XssSearchController', XssSearchController);
 
-    XssSearchController.$inject = ['$q', '$sanitize', '$sce', 'dataservice', 'logger'];
+    XssSearchController.$inject = ['$q', '$sanitize', '$sce', 'dataservice', 'logger', '$location', '$scope', '$timeout'];
     /* @ngInject */
-    function XssSearchController($q, $sanitize, $sce, dataservice, logger) {
+    function XssSearchController($q, $sanitize, $sce, dataservice, logger, $location, $scope, $timeout) {
         var vm = this;
         vm.title = 'XSS Search';
         vm.search = search;
         vm.searchResults = undefined;
+
+        vm.searchTerm = "zz"; //$location.hash();
+        $timeout(function () {
+            $scope.searchTerm = $location.hash();
+            vm.search($scope.searchTerm);
+        }, 1000);
 
         activate();
 
@@ -24,6 +30,7 @@
                 .then(function(response) {
                     // Intentionally trusting as HTML for demonstration purposes
                     console.log('Search response: ', response);
+                    $location.hash(response);
                     vm.searchResults = $sce.trustAsHtml(response);
                 })
                 .catch(function(error) {
